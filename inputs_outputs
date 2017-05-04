@@ -30,9 +30,9 @@ while True:
         #Do something here
 
 def Unlock_door():
-	GPIO.output(Relay_contact, False) #Assuming the relay is wired so the 'defalt pos' is 'OFF'
+	GPIO.output(Relay_contact, GPIO.LOW) #Assuming the relay is wired so the 'defalt pos' is 'OFF'
 	time.sleep(0.2)
 
 def Lock_door():
-	GPIO.output(Relay_contact, True) #Activating the Relay
+	GPIO.output(Relay_contact, GPIO.HIGH) #Activating the Relay
 	time.sleep(0.2)
