@@ -1,0 +1,38 @@
+import requests
+import time
+import RPi.GPIO as GPIO
+
+Button_A = 10 # The GPIO pin the button is attached to
+Button_B = 9 # The GPIO pin the button is attached to
+Button_C = 11 # The GPIO pin the button is attached to
+Button_D = 8 # The GPIO pin the button is attached to
+
+Relay_contact = 7
+
+#//////Seting up the pinmodes///////
+GPIO.setmode(GPIO.BCM) #Defines what the numbering scheme is for the pins
+GPIO.setup(Button_A, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Setting the button as an input and turning on some Pull-up resistors
+GPIO.setup(Button_B, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(Button_C, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(Button_D, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(Relay_contact, GPIO.OUT) #Making the Relay contact an output.
+
+while True:
+    time.sleep(0.2)
+
+    if GPIO.input(Button_A) == False: # Listen for the press
+        #Do something here
+    if GPIO.input(Button_B) == False: # Listen for the press
+        #Do something here
+    if GPIO.input(Button_C) == False: # Listen for the press
+        #Do something here
+    if GPIO.input(Button_D) == False: # Listen for the press
+        #Do something here
+
+def Unlock_door():
+	GPIO.output(Relay_contact, GPIO.LOW) #Assuming the relay is wired so the 'defalt pos' is 'OFF'
+	time.sleep(0.2)
+
+def Lock_door():
+	GPIO.output(Relay_contact, GPIO.HIGH) #Activating the Relay
+	time.sleep(0.2)
