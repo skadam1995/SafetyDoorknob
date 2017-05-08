@@ -1,0 +1,27 @@
+from PIL import Image as PImage
+last_pic = 0
+last_folder = 0
+
+def random_picture():
+    global last_pic
+    global last_folder
+    folders = ['folder_1', 'folder_2', 'folder_3'] #We put the name of the folders we have the different questions in here
+    randomNumber = random.randint(0, length(folders) - 1)
+    folder = randomNumber
+
+    general_pathway = "C:/" #pathway to where the picture folders are located.
+
+    imagesList = listdir(general_pathway + folders(randomNumber)) #makes the list of the pictures in the folder. Also creates the pathway
+    loadedImages = []
+    for image in imagesList:
+        img = PImage.open(general_pathway+folders(randomNumber) + image)
+        loadedImages.append(img)
+
+    randomNumber = random.randint(0, length(loadedImages) - 1)
+    while(last_pic == randomNumber and last_folder == folder):
+        randomNumber = random.randint(0,length(loadedImages)-1)
+    
+    image = loadedImages(randomNumber)
+    last_pic = randomNumber
+    last_folder = folder
+    image.show() #Just display the 'image'. You might want to make this 'return image'...
