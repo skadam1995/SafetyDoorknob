@@ -1,0 +1,19 @@
+import smtplib
+
+username = "homesafetyinnovationsmih@gmail.com " #email sent from
+password = "MakeItHappen"
+vtext = "3175601022@vtext.com" #email/txt/sms gateway - http://www.emailtextmessages.com/
+message = "Failed door code several times"
+
+# The message to send
+msg = """From: %s
+To: %s
+Subject: Fialed Attemps
+%s""" % (username, vtext, message)
+
+def send_email():
+    #your mail server details
+    server = smtplib.SMTP('mail.server.com',587)
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(username, vtext, msg)
